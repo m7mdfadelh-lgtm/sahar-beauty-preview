@@ -1,0 +1,24 @@
+{
+  "name": "Sahar Beauty Admin",
+  "short_name": "Sahar Admin",
+  "start_url": "./admin.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f3ee",
+  "theme_color": "#7d5938",
+  "description": "Private appointment management for Sahar Beauty",
+  "icons": [
+    {
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable",
+      "src": "./admin-icon-192.png"
+    },
+    {
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable",
+      "src": "./admin-icon-512.png"
+    }
+  ]
+}

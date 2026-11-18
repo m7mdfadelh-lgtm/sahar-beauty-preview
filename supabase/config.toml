@@ -1,0 +1,4 @@
+project_id = "cgmuvhvmrolhfrgdvtuw"
+
+[functions.admin-login]
+verify_jwt = false
