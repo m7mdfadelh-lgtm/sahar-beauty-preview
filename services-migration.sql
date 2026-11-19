@@ -60,7 +60,7 @@ create policy "clients can submit pending requests" on public.appointments for i
   with check (
     status = 'pending'
     and deposit_ils = 100
-    and (payment_method <> 'bit' or proof_path is not null)
+    and (payment_method not in ('bit','bank') or proof_path is not null)
     and (service_name is null or length(trim(service_name)) > 0)
     and exists (select 1 from public.business_public_config c where c.id = 1)
     and exists (

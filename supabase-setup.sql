@@ -30,7 +30,7 @@ create table if not exists public.appointments (
   proof_path text,
   status text not null default 'pending' check (status in ('pending','approved')),
   created_at timestamptz not null default now(),
-  constraint bit_requires_proof check (payment_method <> 'bit' or proof_path is not null)
+  constraint deposit_methods_require_proof check (payment_method not in ('bit','bank') or proof_path is not null)
 );
 
 alter table public.business_public_config enable row level security;
@@ -57,7 +57,7 @@ create policy "clients can submit pending requests" on public.appointments for i
   with check (
     exists (select 1 from public.business_public_config where id = 1)
     and status = 'pending' and deposit_ils = 100
-    and (payment_method <> 'bit' or proof_path is not null)
+    and (payment_method not in ('bit','bank') or proof_path is not null)
   );
 drop policy if exists "owner reads appointments" on public.appointments;
 create policy "owner reads appointments" on public.appointments for select to authenticated
